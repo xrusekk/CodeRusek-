@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090711">
+<meta name="description" content="CodeRusek — nowoczesne strony internetowe i kreatywne projekty.">
+<title>CodeRusek — Creative Web Developer</title>
+
+<style>
+:root {
+    --bg: #090711;
+    --panel: #120e1d;
+    --purple: #a855f7;
+    --light: #d8b4fe;
+    --text: #fff;
+    --muted: #aaa3b5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+/* BACKGROUND */
+
+.background-glow {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background: #8b2be2;
+    filter: blur(160px);
+    opacity: .15;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    top: 15%;
+    left: 30%;
+}
+
+/* NAVIGATION */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: #090711eF;
+    border-bottom: 1px solid #ffffff12;
+    backdrop-filter: blur(15px);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    color: var(--purple);
+    text-shadow: 0 0 20px #a855f766;
+}
+
+.logo span {
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 14px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--light);
+}
+
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* BUTTONS */
+
+.btn {
+    display: inline-block;
+    padding: 15px 26px;
+    background: linear-gradient(135deg,#a855f7,#6b21a8);
+    color: white;
+    border-radius: 9px;
+    font-weight: bold;
+    border: 1px solid #c084fc66;
+    box-shadow: 0 0 25px #9333ea44;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 35px #a855f7aa;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--purple);
+    box-shadow: none;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 70px 20px;
+    background:
+        radial-gradient(ellipse at center,
+        #381451 0%, #180d28 35%, #090711 75%);
+}
+
+.tag {
+    color: var(--light);
+    border: 1px solid #a855f766;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+    animation: pulse 2.5s infinite;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 9vw, 85px);
+    line-height: 1.1;
+    margin-bottom: 25px;
+    animation: appear 1s ease;
+}
+
+.hero h1 span {
+    color: var(--purple);
+    text-shadow: 0 0 30px #a855f7aa;
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 32px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 95px 8%;
+}
+
+.section-title {
+    font-size: clamp(30px, 5vw, 42px);
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title span {
+    color: var(--purple);
+}
+
+.about {
+    max-width: 750px;
+    margin: auto;
+    text-align: center;
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+/* PROJECTS */
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    gap: 22px;
+}
+
+.card {
+    background: linear-gradient(145deg,#191126,#100c18);
+    border: 1px solid #a855f733;
+    border-radius: 15px;
+    padding: 30px;
+    transition: .35s;
+}
+
+.card:hover {
+    transform: translateY(-9px);
+    border-color: var(--purple);
+    box-shadow: 0 0 30px #9333ea33;
+}
+
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    color: var(--light);
+    margin-bottom: 14px;
+}
+
+.card p {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.card .status {
+    display: inline-block;
+    margin-top: 20px;
+    color: #c084fc;
+    font-size: 12px;
+}
+
+/* SKILLS */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.skill {
+    padding: 15px 24px;
+    background: var(--panel);
+    border: 1px solid #a855f755;
+    border-radius: 10px;
+    color: var(--light);
+    transition: .3s;
+}
+
+.skill:hover {
+    background: #301747;
+    transform: scale(1.05);
+}
+
+/* CONTACT */
+
+.contact {
+    text-align: center;
+    background: radial-gradient(ellipse at center,#27113c,#090711 75%);
+}
+
+.contact p {
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 30px 15px;
+    text-align: center;
+    color: #777;
+    border-top: 1px solid #ffffff12;
+    font-size: 13px;
+}
+
+footer span {
+    color: var(--purple);
+}
+
+/* SCROLL ANIMATIONS */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* KEYFRAMES */
+
+@keyframes pulse {
+    0%,100% {
+        box-shadow: 0 0 5px #a855f733;
+    }
+    50% {
+        box-shadow: 0 0 20px #a855f777;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+    nav {
+        padding: 18px 5%;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 25px;
+        background: #100c19;
+        flex-direction: column;
+        border-bottom: 1px solid #a855f744;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero {
+        min-height: 80vh;
+    }
+
+    section {
+        padding: 70px 6%;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .hero-buttons a {
+        text-align: center;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background-glow"></div>
+
+<nav>
+    <a href="#home" class="logo">Code<span>Rusek.</span></a>
+
+    <button class="menu-button" id="menuButton"
+        aria-label="Otwórz menu" aria-expanded="false">
+        ☰
+    </button>
+
+    <div class="nav-links" id="navLinks">
+        <a href="#home">Start</a>
+        <a href="#about">O mnie</a>
+        <a href="#projects">Projekty</a>
+        <a href="#skills">Umiejętności</a>
+        <a href="#contact">Kontakt</a>
+    </div>
+</nav>
+
+<main>
+
+<div class="hero" id="home">
+    <div class="tag">✦ CREATIVE WEB DEVELOPMENT ✦</div>
+
+    <h1>Tworzę strony<br>
+        <span>bez granic.</span>
+    </h1>
+
+    <p>
+        Witaj w świecie CodeRusek.
+        Nowoczesny design, kreatywne pomysły
+        i technologie internetowe.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="#projects" class="btn">Zobacz projekty →</a>
+        <a href="#contact" class="btn btn-outline">Kontakt</a>
+    </div>
+</div>
+
+<section id="about" class="reveal">
+    <h2 class="section-title">O <span>mnie</span></h2>
+
+    <p class="about">
+        Jestem twórcą CodeRusek.
+        Rozwijam swoje umiejętności w tworzeniu
+        stron internetowych. Stawiam na nowoczesny
+        wygląd, kreatywność i ciągły rozwój.
+        Każdy projekt to kolejna okazja do nauki.
+    </p>
+</section>
+
+<section id="projects" class="reveal">
+    <h2 class="section-title">Moje <span>projekty</span></h2>
+
+    <div class="projects">
+
+        <article class="card">
+            <div class="card-icon">🌌</div>
+            <h3>CodeRusek Portfolio</h3>
+            <p>
+                Osobista strona internetowa
+                w nowoczesnym, ciemnym stylu.
+            </p>
+            <span class="status">W trakcie rozwoju</span>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">💻</div>
+            <h3>Web Project</h3>
+            <p>
+                Miejsce na kolejny projekt
+                i nowe pomysły internetowe.
+            </p>
+            <span class="status">Wkrótce</span>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Creative Design</h3>
+            <p>
+                Eksperymenty z wyglądem,
+                kolorami i interfejsem.
+            </p>
+            <span class="status">Wkrótce</span>
+        </article>
+
+    </div>
+</section>
+
+<section id="skills" class="reveal">
+    <h2 class="section-title">Moje <span>umiejętności</span></h2>
+
+    <div class="skills">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Responsive Design</div>
+        <div class="skill">Web Design</div>
+    </div>
+</section>
+
+<section id="contact" class="contact reveal">
+    <h2 class="section-title">Stwórzmy coś <span>razem.</span></h2>
+
+    <p>
+        Masz ciekawy pomysł na projekt?
+        Skontaktuj się ze mną.
+    </p>
+
+    <a href="mailto:xrusekk@gmail.com" class="btn">
+        Napisz do mnie →
+    </a>
+</section>
+
+</main>
+
+<footer>
+    © <span id="year"></span> CodeRusek. Wszystkie prawa zastrzeżone.
+</footer>
+
+<script>
+// MOBILE MENU
+
+const menuButton = document.getElementById("menuButton");
+const navLinks = document.getElementById("navLinks");
+
+menuButton.addEventListener("click", () => {
+    const opened = navLinks.classList.toggle("active");
+    menuButton.setAttribute("aria-expanded", opened);
+    menuButton.textContent = opened ? "✕" : "☰";
+});
+
+// CLOSE MENU AFTER CLICK
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "☰";
+    });
+});
+
+// SCROLL REVEAL
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+
+// CURRENT YEAR
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
