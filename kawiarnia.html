@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velvet Café | Coffee & Moments</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #f7f2e9;
+  --brown: #38271e;
+  --gold: #b58b55;
+  --light: #fffdf8;
+  --muted: #82766b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--brown);
+  font-family: 'DM Sans', sans-serif;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,253,248,.96);
+  backdrop-filter: blur(12px);
+  padding: 20px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 20px #38271e0b;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+nav {
+  display: flex;
+  gap: 28px;
+}
+
+nav a {
+  color: var(--brown);
+  text-decoration: none;
+  font-size: 14px;
+  transition: .3s;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: none;
+  color: var(--brown);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  padding: 80px 10%;
+  background:
+    linear-gradient(90deg, #21150dcc, #21150d55),
+    url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1800') center/cover;
+  color: white;
+}
+
+.hero-content {
+  max-width: 650px;
+  animation: appear 1s ease;
+}
+
+.eyebrow {
+  color: #e2c49c;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 8vw, 88px);
+  line-height: 1.08;
+  margin-bottom: 25px;
+}
+
+.hero p {
+  color: #eee3d6;
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 35px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 30px;
+  background: var(--gold);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: .3s;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background: #987043;
+  transform: translateY(-3px);
+}
+
+section {
+  padding: 100px 9%;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-heading small {
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 48px);
+  margin-top: 12px;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 65px;
+  align-items: center;
+}
+
+.about img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.about-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  margin: 15px 0;
+}
+
+.about-text p {
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 25px;
+}
+
+.menu-section {
+  background: var(--light);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.menu-card {
+  background: white;
+  border: 1px solid #eee5d9;
+  transition: .35s;
+  overflow: hidden;
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px #38271e15;
+}
+
+.menu-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.menu-info {
+  padding: 25px;
+}
+
+.menu-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.menu-info p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.price {
+  color: var(--gold);
+  font-weight: bold;
+  margin-top: 17px;
+}
+
+.banner {
+  text-align: center;
+  color: white;
+  background:
+    linear-gradient(#21150d99,#21150d99),
+    url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600') center/cover;
+}
+
+.banner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(35px, 6vw, 58px);
+  margin-bottom: 20px;
+}
+
+.banner p {
+  color: #eee3d6;
+  margin-bottom: 30px;
+}
+
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.review {
+  background: var(--light);
+  padding: 30px;
+  border: 1px solid #eee5d9;
+}
+
+.stars {
+  color: var(--gold);
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+}
+
+.review p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.review h4 {
+  margin-top: 20px;
+}
+
+.contact {
+  background: #38271e;
+  color: white;
+  text-align: center;
+}
+
+.contact p {
+  color: #d5c7b8;
+  margin: 15px 0 30px;
+}
+
+.contact .btn {
+  margin-top: 10px;
+}
+
+footer {
+  background: #251911;
+  color: #c7b7a5;
+  text-align: center;
+  padding: 30px 15px;
+  font-size: 13px;
+}
+
+footer span {
+  color: #d1a66c;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media(max-width: 800px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    background: var(--light);
+    padding: 25px;
+    flex-direction: column;
+    text-align: center;
+    gap: 22px;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .about img {
+    height: 300px;
+  }
+
+  .menu-grid,
+  .reviews {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 70px 7%;
+  }
+
+  header {
+    padding: 18px 7%;
+  }
+
+  .hero {
+    min-height: 570px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">VELVET<span>.</span></div>
+
+  <button class="menu-toggle" id="toggle" aria-label="Otwórz menu">☰</button>
+
+  <nav id="nav">
+    <a href="#home">Start</a>
+    <a href="#about">O nas</a>
+    <a href="#menu">Menu</a>
+    <a href="#reviews">Opinie</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+
+<div class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">Coffee • Taste • Moments</div>
+    <h1>Chwila<br>tylko dla Ciebie.</h1>
+    <p>
+      Odkryj wyjątkowy smak świeżo parzonej kawy
+      i atmosferę, która sprawia, że każda chwila
+      staje się wyjątkowa.
+    </p>
+    <a href="#menu" class="btn">Odkryj nasze menu</a>
+  </div>
+</div>
+
+<section class="about reveal" id="about">
+  <img
+    src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=900"
+    alt="Eleganckie wnętrze kawiarni">
+
+  <div class="about-text">
+    <div class="eyebrow">Nasza historia</div>
+    <h2>Więcej niż zwykła kawa.</h2>
+    <p>
+      Velvet Café to fikcyjna kawiarnia stworzona
+      z myślą o miłośnikach dobrego smaku.
+      Łączymy przytulną atmosferę, starannie
+      przygotowaną kawę i wyjątkowe desery.
+    </p>
+    <a href="#contact" class="btn">Poznaj nas</a>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="section-heading reveal">
+    <small>Nasze propozycje</small>
+    <h2>Smaki, które pokochasz</h2>
+  </div>
+
+  <div class="menu-grid">
+
+    <div class="menu-card reveal">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800" alt="Filiżanka kawy">
+      <div class="menu-info">
+        <h3>Velvet Cappuccino</h3>
+        <p>Espresso z aksamitną mleczną pianką.</p>
+        <div class="price">16 zł</div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800" alt="Ciasto czekoladowe">
+      <div class="menu-info">
+        <h3>Chocolate Cake</h3>
+        <p>Intensywnie czekoladowy deser.</p>
+        <div class="price">19 zł</div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal">
+      <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800" alt="Croissant">
+      <div class="menu-info">
+        <h3>French Croissant</h3>
+        <p>Maślany, delikatny i chrupiący.</p>
+        <div class="price">13 zł</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="banner reveal">
+  <h2>Małe chwile. Wielkie przyjemności.</h2>
+  <p>Znajdź swój ulubiony smak i ciesz się chwilą.</p>
+  <a href="#menu" class="btn">Zobacz menu</a>
+</section>
+
+<section id="reviews">
+  <div class="section-heading reveal">
+    <small>Opinie przykładowe</small>
+    <h2>Co mówią nasi goście?</h2>
+  </div>
+
+  <div class="reviews">
+
+    <div class="review reveal">
+      <div class="stars">★★★★★</div>
+      <p>„Piękne wnętrze i wyjątkowa atmosfera. Idealne miejsce na kawę.”</p>
+      <h4>Anna</h4>
+    </div>
+
+    <div class="review reveal">
+      <div class="stars">★★★★★</div>
+      <p>„Świetny klimat, pyszne desery i bardzo dobra kawa!”</p>
+      <h4>Mateusz</h4>
+    </div>
+
+    <div class="review reveal">
+      <div class="stars">★★★★★</div>
+      <p>„Miejsce, do którego chce się wracać. Bardzo przyjemny wystrój.”</p>
+      <h4>Kasia</h4>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="eyebrow">Zapraszamy</div>
+  <h2>Znajdź chwilę dla siebie.</h2>
+  <p>Velvet Café — projekt demonstracyjny CodeRusek.</p>
+  <a class="btn" href="mailto:xrusekk@gmail.com">
+    Napisz do nas
+  </a>
+</section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> Velvet Café
+  | Projekt demonstracyjny CodeRusek
+</footer>
+
+<script>
+const toggle = document.getElementById('toggle');
+const nav = document.getElementById('nav');
+
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+  toggle.textContent = nav.classList.contains('active') ? '×' : '☰';
+});
+
+nav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('active');
+    toggle.textContent = '☰';
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(element => {
+  observer.observe(element);
+});
+
+document.getElementById('year').textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
