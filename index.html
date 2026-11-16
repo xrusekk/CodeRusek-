@@ -5,34 +5,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#090711">
-<meta name="description" content="CodeRusek — nowoczesne strony internetowe i kreatywne projekty.">
-<title>CodeRusek — Creative Web Developer</title>
+<meta name="description" content="CodeRusek - nowoczesne strony internetowe i kreatywne projekty.">
+<title>CodeRusek | Tworzę strony internetowe</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 :root {
     --bg: #090711;
-    --panel: #120e1d;
+    --card: #141020;
     --purple: #a855f7;
-    --light: #d8b4fe;
-    --text: #fff;
-    --muted: #aaa3b5;
+    --light-purple: #c084fc;
+    --text: #f5f3ff;
+    --muted: #aaa3bb;
+    --border: rgba(168,85,247,.2);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
     scroll-behavior: smooth;
-    scroll-padding-top: 85px;
 }
 
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
@@ -41,56 +41,44 @@ a {
     text-decoration: none;
 }
 
-button {
-    font: inherit;
-}
-
-/* BACKGROUND */
-
-.background-glow {
-    position: fixed;
-    width: 350px;
-    height: 350px;
-    background: #8b2be2;
-    filter: blur(160px);
-    opacity: .15;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: -1;
-    top: 15%;
-    left: 30%;
+.container {
+    width: min(1100px, 90%);
+    margin: auto;
 }
 
 /* NAVIGATION */
 
-nav {
+header {
     position: sticky;
     top: 0;
     z-index: 100;
+    background: rgba(9,7,17,.88);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+}
+
+nav {
+    min-height: 75px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 8%;
-    background: #090711eF;
-    border-bottom: 1px solid #ffffff12;
-    backdrop-filter: blur(15px);
 }
 
 .logo {
     font-size: 25px;
     font-weight: 900;
-    color: var(--purple);
-    text-shadow: 0 0 20px #a855f766;
+    letter-spacing: -1px;
 }
 
 .logo span {
-    color: white;
+    color: var(--purple);
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 30px;
+    list-style: none;
 }
 
 .nav-links a {
@@ -100,117 +88,133 @@ nav {
 }
 
 .nav-links a:hover {
-    color: var(--light);
+    color: var(--light-purple);
 }
 
 .menu-button {
     display: none;
-    background: none;
-    border: none;
+    border: 1px solid var(--border);
+    background: var(--card);
     color: white;
-    font-size: 26px;
-    cursor: pointer;
-}
-
-/* BUTTONS */
-
-.btn {
-    display: inline-block;
-    padding: 15px 26px;
-    background: linear-gradient(135deg,#a855f7,#6b21a8);
-    color: white;
+    font-size: 22px;
+    padding: 7px 12px;
     border-radius: 9px;
-    font-weight: bold;
-    border: 1px solid #c084fc66;
-    box-shadow: 0 0 25px #9333ea44;
-    transition: .3s;
-}
-
-.btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 35px #a855f7aa;
-}
-
-.btn-outline {
-    background: transparent;
-    border: 1px solid var(--purple);
-    box-shadow: none;
+    cursor: pointer;
 }
 
 /* HERO */
 
 .hero {
-    min-height: 90vh;
+    min-height: 570px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 70px 20px;
-    background:
-        radial-gradient(ellipse at center,
-        #381451 0%, #180d28 35%, #090711 75%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: var(--purple);
+    filter: blur(180px);
+    opacity: .17;
+    right: -100px;
+    top: 30px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 750px;
+    padding: 90px 0;
 }
 
 .tag {
-    color: var(--light);
-    border: 1px solid #a855f766;
-    padding: 10px 20px;
+    display: inline-block;
+    color: var(--light-purple);
+    border: 1px solid var(--border);
+    background: rgba(168,85,247,.08);
     border-radius: 30px;
-    font-size: 12px;
-    letter-spacing: 2px;
-    margin-bottom: 28px;
-    animation: pulse 2.5s infinite;
+    padding: 8px 16px;
+    font-size: 13px;
+    margin-bottom: 25px;
 }
 
 .hero h1 {
-    font-size: clamp(42px, 9vw, 85px);
-    line-height: 1.1;
+    font-size: clamp(42px, 8vw, 76px);
+    line-height: 1.08;
+    font-weight: 900;
+    letter-spacing: -3px;
     margin-bottom: 25px;
-    animation: appear 1s ease;
 }
 
-.hero h1 span {
+.hero h1 span,
+.section-title span {
     color: var(--purple);
-    text-shadow: 0 0 30px #a855f7aa;
 }
 
 .hero p {
     color: var(--muted);
-    max-width: 560px;
-    line-height: 1.8;
-    margin-bottom: 32px;
+    max-width: 580px;
+    font-size: 17px;
+    margin-bottom: 35px;
 }
 
-.hero-buttons {
+.buttons {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 13px 23px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #9333ea, #6d28d9);
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid transparent;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(168,85,247,.25);
+}
+
+.btn-outline {
+    background: transparent;
+    border-color: var(--border);
+}
+
+.btn-outline:hover {
+    background: rgba(168,85,247,.1);
 }
 
 /* SECTIONS */
 
 section {
-    padding: 95px 8%;
+    padding: 85px 0;
 }
 
 .section-title {
-    font-size: clamp(30px, 5vw, 42px);
+    font-size: clamp(30px, 5vw, 43px);
     text-align: center;
     margin-bottom: 45px;
-}
-
-.section-title span {
-    color: var(--purple);
+    font-weight: 900;
+    letter-spacing: -1px;
 }
 
 .about {
-    max-width: 750px;
+    max-width: 720px;
     margin: auto;
     text-align: center;
     color: var(--muted);
-    line-height: 1.9;
     font-size: 16px;
 }
 
@@ -218,75 +222,94 @@ section {
 
 .projects {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 22px;
 }
 
 .card {
-    background: linear-gradient(145deg,#191126,#100c18);
-    border: 1px solid #a855f733;
-    border-radius: 15px;
-    padding: 30px;
-    transition: .35s;
+    background: linear-gradient(145deg, #171125, #100d19);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .card:hover {
-    transform: translateY(-9px);
+    transform: translateY(-7px);
     border-color: var(--purple);
-    box-shadow: 0 0 30px #9333ea33;
+    box-shadow: 0 12px 35px rgba(112,40,180,.12);
 }
 
 .card-icon {
-    font-size: 35px;
-    margin-bottom: 20px;
+    width: 53px;
+    height: 53px;
+    display: grid;
+    place-items: center;
+    background: rgba(168,85,247,.12);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    font-size: 25px;
+    margin-bottom: 22px;
 }
 
 .card h3 {
-    color: var(--light);
-    margin-bottom: 14px;
+    font-size: 19px;
+    margin-bottom: 12px;
 }
 
 .card p {
     color: var(--muted);
-    line-height: 1.7;
     font-size: 14px;
+    margin-bottom: 22px;
 }
 
-.card .status {
-    display: inline-block;
-    margin-top: 20px;
-    color: #c084fc;
+.card .btn {
+    margin-top: auto;
+    margin-bottom: 18px;
+}
+
+.status {
+    color: var(--light-purple);
     font-size: 12px;
+    font-weight: 700;
+    background: rgba(168,85,247,.1);
+    padding: 6px 11px;
+    border-radius: 20px;
 }
 
 /* SKILLS */
 
 .skills {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 14px;
 }
 
 .skill {
-    padding: 15px 24px;
-    background: var(--panel);
-    border: 1px solid #a855f755;
+    padding: 13px 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: 10px;
-    color: var(--light);
+    color: var(--light-purple);
+    font-weight: 600;
+    font-size: 14px;
     transition: .3s;
 }
 
 .skill:hover {
-    background: #301747;
-    transform: scale(1.05);
+    border-color: var(--purple);
+    transform: translateY(-3px);
 }
 
 /* CONTACT */
 
 .contact {
     text-align: center;
-    background: radial-gradient(ellipse at center,#27113c,#090711 75%);
+    background: radial-gradient(ellipse at center, rgba(126,34,206,.13), transparent 70%);
 }
 
 .contact p {
@@ -297,23 +320,19 @@ section {
 /* FOOTER */
 
 footer {
-    padding: 30px 15px;
     text-align: center;
-    color: #777;
-    border-top: 1px solid #ffffff12;
+    padding: 28px 15px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
     font-size: 13px;
 }
 
-footer span {
-    color: var(--purple);
-}
-
-/* SCROLL ANIMATIONS */
+/* ANIMATIONS */
 
 .reveal {
     opacity: 0;
-    transform: translateY(35px);
-    transition: opacity .8s ease, transform .8s ease;
+    transform: translateY(25px);
+    transition: opacity .7s ease, transform .7s ease;
 }
 
 .reveal.visible {
@@ -321,35 +340,15 @@ footer span {
     transform: translateY(0);
 }
 
-/* KEYFRAMES */
-
-@keyframes pulse {
-    0%,100% {
-        box-shadow: 0 0 5px #a855f733;
-    }
-    50% {
-        box-shadow: 0 0 20px #a855f777;
-    }
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* MOBILE */
 
-@media(max-width:700px) {
-    nav {
-        padding: 18px 5%;
+@media (max-width: 800px) {
+    .projects {
+        grid-template-columns: repeat(2, 1fr);
     }
+}
 
+@media (max-width: 600px) {
     .menu-button {
         display: block;
     }
@@ -357,13 +356,14 @@ footer span {
     .nav-links {
         display: none;
         position: absolute;
-        top: 70px;
+        top: 75px;
         left: 0;
         width: 100%;
+        background: #100d19;
+        border-bottom: 1px solid var(--border);
         padding: 25px;
-        background: #100c19;
         flex-direction: column;
-        border-bottom: 1px solid #a855f744;
+        gap: 22px;
     }
 
     .nav-links.active {
@@ -371,29 +371,31 @@ footer span {
     }
 
     .hero {
-        min-height: 80vh;
+        min-height: 500px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
     }
 
     section {
-        padding: 70px 6%;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-        max-width: 280px;
-    }
-
-    .hero-buttons a {
-        text-align: center;
+        padding: 65px 0;
     }
 }
 
-@media(prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
         scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
     }
 }
 </style>
@@ -401,120 +403,127 @@ footer span {
 
 <body>
 
-<div class="background-glow"></div>
+<header>
+    <div class="container">
+        <nav>
+            <a href="#" class="logo">Code<span>Rusek</span></a>
 
-<nav>
-    <a href="#home" class="logo">Code<span>Rusek.</span></a>
+            <button class="menu-button" id="menuButton"
+                aria-label="Otwórz menu"
+                aria-expanded="false">☰</button>
 
-    <button class="menu-button" id="menuButton"
-        aria-label="Otwórz menu" aria-expanded="false">
-        ☰
-    </button>
-
-    <div class="nav-links" id="navLinks">
-        <a href="#home">Start</a>
-        <a href="#about">O mnie</a>
-        <a href="#projects">Projekty</a>
-        <a href="#skills">Umiejętności</a>
-        <a href="#contact">Kontakt</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Start</a></li>
+                <li><a href="#about">O mnie</a></li>
+                <li><a href="#projects">Projekty</a></li>
+                <li><a href="#skills">Umiejętności</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
     </div>
-</nav>
+</header>
 
-<main>
+<main class="container">
 
-<div class="hero" id="home">
-    <div class="tag">✦ CREATIVE WEB DEVELOPMENT ✦</div>
+    <section class="hero" id="home">
+        <div class="hero-content reveal">
+            <div class="tag">✦ Kreatywność • Technologia • Rozwój</div>
 
-    <h1>Tworzę strony<br>
-        <span>bez granic.</span>
-    </h1>
+            <h1>
+                Tworzę strony<br>
+                <span>z charakterem.</span>
+            </h1>
 
-    <p>
-        Witaj w świecie CodeRusek.
-        Nowoczesny design, kreatywne pomysły
-        i technologie internetowe.
-    </p>
-
-    <div class="hero-buttons">
-        <a href="#projects" class="btn">Zobacz projekty →</a>
-        <a href="#contact" class="btn btn-outline">Kontakt</a>
-    </div>
-</div>
-
-<section id="about" class="reveal">
-    <h2 class="section-title">O <span>mnie</span></h2>
-
-    <p class="about">
-        Jestem twórcą CodeRusek.
-        Rozwijam swoje umiejętności w tworzeniu
-        stron internetowych. Stawiam na nowoczesny
-        wygląd, kreatywność i ciągły rozwój.
-        Każdy projekt to kolejna okazja do nauki.
-    </p>
-</section>
-
-<section id="projects" class="reveal">
-    <h2 class="section-title">Moje <span>projekty</span></h2>
-
-    <div class="projects">
-
-        <article class="card">
-            <div class="card-icon">🌌</div>
-            <h3>CodeRusek Portfolio</h3>
             <p>
-                Osobista strona internetowa
-                w nowoczesnym, ciemnym stylu.
+                Witaj w CodeRusek! Tworzę nowoczesne,
+                estetyczne i responsywne strony internetowe.
+                Każdy projekt to nowy pomysł i kolejny krok w rozwoju.
             </p>
-            <span class="status">W trakcie rozwoju</span>
-        </article>
 
-        <article class="card">
-            <div class="card-icon">💻</div>
-            <h3>Web Project</h3>
-            <p>
-                Miejsce na kolejny projekt
-                i nowe pomysły internetowe.
-            </p>
-            <span class="status">Wkrótce</span>
-        </article>
+            <div class="buttons">
+                <a href="#projects" class="btn">Zobacz projekty →</a>
+                <a href="#contact" class="btn btn-outline">Kontakt</a>
+            </div>
+        </div>
+    </section>
 
-        <article class="card">
-            <div class="card-icon">⚡</div>
-            <h3>Creative Design</h3>
-            <p>
-                Eksperymenty z wyglądem,
-                kolorami i interfejsem.
-            </p>
-            <span class="status">Wkrótce</span>
-        </article>
+    <section id="about" class="reveal">
+        <h2 class="section-title">O <span>mnie</span></h2>
 
-    </div>
-</section>
+        <p class="about">
+            Jestem twórcą CodeRusek.
+            Rozwijam swoje umiejętności w tworzeniu
+            stron internetowych. Stawiam na nowoczesny
+            wygląd, kreatywność i ciągły rozwój.
+            Każdy projekt to kolejna okazja do nauki.
+        </p>
+    </section>
 
-<section id="skills" class="reveal">
-    <h2 class="section-title">Moje <span>umiejętności</span></h2>
+    <section id="projects" class="reveal">
+        <h2 class="section-title">Moje <span>projekty</span></h2>
 
-    <div class="skills">
-        <div class="skill">HTML</div>
-        <div class="skill">CSS</div>
-        <div class="skill">JavaScript</div>
-        <div class="skill">Responsive Design</div>
-        <div class="skill">Web Design</div>
-    </div>
-</section>
+        <div class="projects">
 
-<section id="contact" class="contact reveal">
-    <h2 class="section-title">Stwórzmy coś <span>razem.</span></h2>
+            <article class="card">
+                <div class="card-icon">🌌</div>
+                <h3>CodeRusek Portfolio</h3>
+                <p>
+                    Osobista strona internetowa
+                    w nowoczesnym, ciemnym stylu.
+                </p>
+                <span class="status">W trakcie rozwoju</span>
+            </article>
 
-    <p>
-        Masz ciekawy pomysł na projekt?
-        Skontaktuj się ze mną.
-    </p>
+            <article class="card">
+                <div class="card-icon">☕</div>
+                <h3>Velvet Café</h3>
+                <p>
+                    Elegancka strona internetowa
+                    dla nowoczesnej kawiarni.
+                </p>
+                <a href="kawiarnia.html" class="btn">
+                    Zobacz projekt →
+                </a>
+                <span class="status">Ukończony</span>
+            </article>
 
-    <a href="mailto:xrusekk@gmail.com" class="btn">
-        Napisz do mnie →
-    </a>
-</section>
+            <article class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Creative Design</h3>
+                <p>
+                    Eksperymenty z wyglądem,
+                    kolorami i interfejsem.
+                </p>
+                <span class="status">Wkrótce</span>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="skills" class="reveal">
+        <h2 class="section-title">Moje <span>umiejętności</span></h2>
+
+        <div class="skills">
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">Responsive Design</div>
+            <div class="skill">Web Design</div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact reveal">
+        <h2 class="section-title">Stwórzmy coś <span>razem.</span></h2>
+
+        <p>
+            Masz ciekawy pomysł na projekt?
+            Skontaktuj się ze mną.
+        </p>
+
+        <a href="mailto:xrusekk@gmail.com" class="btn">
+            Napisz do mnie →
+        </a>
+    </section>
 
 </main>
 
